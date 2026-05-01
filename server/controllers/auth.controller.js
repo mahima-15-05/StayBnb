@@ -26,7 +26,7 @@ const login = async (req, res) => {
     if(!process.env.MY_SECRET_KEY)
         throw new Error("JWT secret is not defined");
 
-    const token = jwt.sign({ userId: user._id }, process.env.MY_SECRET_KEY, {
+    const token = jwt.sign({ userId: user._id, role: user.role }, process.env.MY_SECRET_KEY, {
       expiresIn: "1d",
     });
 
